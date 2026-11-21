@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1d5a3f"><meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" href="/icon-192.png">
+<title>Kishan</title>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7ef;--sf:#fff;--ink:#17261d;--mut:#586a5e;--pri:#1d5a3f;--on:#fff;--acc:#e0a21b;--bd:#d3dccb;--bad:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1c15;--sf:#17281f;--ink:#e8f0e6;--mut:#9fb2a5;--pri:#62c28d;--on:#0b1a12;--acc:#f0b73a;--bd:#2a4036;--bad:#ff8a80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1c15;--sf:#17281f;--ink:#e8f0e6;--mut:#9fb2a5;--pri:#62c28d;--on:#0b1a12;--acc:#f0b73a;--bd:#2a4036;--bad:#ff8a80;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.5 "Mukta",system-ui,"Noto Sans",sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:20px 18px 40px}
+h1,h2,h3{line-height:1.15;margin:0}
+.brand{font-weight:800;font-size:44px;letter-spacing:-.5px}
+.brand i{font-style:normal;color:var(--acc)}
+.sub{color:var(--mut);margin:6px 0 22px}
+.furrow{height:70px;border-radius:0 0 60px 60px;margin:-20px -18px 22px;background:repeating-linear-gradient(172deg,var(--pri) 0 9px,transparent 9px 18px),radial-gradient(circle at 80% 100%,var(--acc) 0 38px,transparent 39px);opacity:.9}
+.langs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+button,select,input{font:inherit;color:inherit}
+.lb{padding:14px;border:2px solid var(--bd);background:var(--sf);border-radius:14px;text-align:left;cursor:pointer;font-size:20px;font-weight:600}
+.lb small{display:block;font-size:13px;color:var(--mut);font-weight:400}
+.lb:hover,.lb:focus-visible{border-color:var(--pri);outline:none}
+label{display:block;font-weight:600;margin:14px 0 5px}
+input[type=text],input[type=tel],input[type=number],select,textarea{width:100%;padding:12px;border:2px solid var(--bd);border-radius:10px;background:var(--sf)}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--acc);outline-offset:1px}
+.btn{display:inline-block;margin-top:16px;padding:13px 22px;border:0;border-radius:12px;background:var(--pri);color:var(--on);font-weight:800;font-size:17px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--pri);border:2px solid var(--pri)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,.tile:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.hint{font-size:14px;color:var(--mut);margin-top:6px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.bar select{width:auto;padding:8px}
+.chip{display:inline-block;padding:4px 12px;border-radius:99px;background:var(--sf);border:1px solid var(--bd);font-size:14px;color:var(--mut)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.tile{padding:18px 14px;border-radius:18px;border:2px solid var(--bd);background:var(--sf);text-align:left;cursor:pointer;min-height:112px}
+.tile:nth-child(1){grid-column:1/-1;background:var(--pri);color:var(--on);border-color:var(--pri)}
+.tile b{display:block;font-size:20px;margin-top:6px}
+.tile span{font-size:30px}
+.tile small{opacity:.8;font-size:13.5px;line-height:1.3;display:block;margin-top:2px}
+.back{background:none;border:0;color:var(--pri);font-weight:800;font-size:16px;cursor:pointer;padding:0;margin-bottom:10px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.out{white-space:pre-wrap;margin-top:18px;padding:16px;border-left:5px solid var(--acc);background:var(--sf);border-radius:0 12px 12px 0}
+.out:empty{display:none}
+.big{font-size:30px;font-weight:800;color:var(--pri)}
+.prev{display:none;width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-top:10px}
+.chat{display:flex;flex-direction:column;gap:8px;margin:12px 0;max-height:46vh;overflow-y:auto}
+.m{padding:10px 14px;border-radius:14px;max-width:88%;white-space:pre-wrap}
+.m.u{align-self:flex-end;background:var(--pri);color:var(--on)}
+.m.k{align-self:flex-start;background:var(--sf);border:1px solid var(--bd)}
+.mic{width:54px;height:54px;border-radius:50%;border:0;background:var(--acc);font-size:24px;cursor:pointer;flex:none}
+.mic.on{background:var(--bad);color:#fff}
+.say{display:flex;gap:8px;align-items:center}
+.note{font-size:13.5px;color:var(--mut);margin-top:14px;border-top:1px solid var(--bd);padding-top:10px}
+.err{color:var(--bad);font-size:14px}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:no-preference){.furrow{animation:rise .8s ease-out}@keyframes rise{from{transform:translateY(-30px);opacity:0}}}
+</style></head><body><div class="wrap">
+<style>
+.tbl{width:100%;border-collapse:collapse;margin-top:14px;font-size:15px}.tbl td,.tbl th{padding:8px 6px;border-bottom:1px solid var(--bd);text-align:left}
+.days{display:flex;gap:8px;overflow-x:auto;margin-top:14px;padding-bottom:6px}.day{flex:none;min-width:84px;padding:10px;border:1px solid var(--bd);border-radius:12px;background:var(--sf);font-size:14px;display:flex;flex-direction:column;gap:2px}
+</style></head><body><div class="wrap">
+<section id="s1"><div class="furrow"></div><h1 class="brand">Kish<i>a</i>n</h1><p class="sub" data-i18n="pick"></p><div class="langs" id="langs"></div></section>
+
+<section id="s2" hidden><button class="back" id="b2" data-i18n="back"></button>
+ <h2 data-i18n="login"></h2><p class="sub" data-i18n="lsub"></p>
+ <label for="nm" data-i18n="name"></label><input id="nm" type="text" autocomplete="name">
+ <label for="ph" data-i18n="phone"></label><input id="ph" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" data-ph="phph">
+ <label for="st" data-i18n="state"></label><select id="st"></select>
+ <label for="di" data-i18n="dist"></label><input id="di" type="text">
+ <button class="btn alt" id="gps" type="button" data-i18n="gps"></button>
+ <div class="hint" id="gh"></div><div class="hint" data-i18n="gnote"></div>
+ <button class="btn" id="go" disabled data-i18n="login"></button></section>
+
+<section id="app" hidden>
+ <div class="bar"><h2 class="brand" style="font-size:30px">Kish<i>a</i>n</h2><select id="lsel" aria-label="Language"></select></div>
+ <div id="home"><h2 id="hi"></h2><span class="chip" id="loc"></span><div class="tiles" id="tiles"></div>
+  <p class="note" data-i18n="inst"></p><button class="btn alt" id="out" data-i18n="logout"></button></div>
+
+ <div class="p" id="p-wx" hidden><button class="back" data-i18n="back"></button><h2 class="tt"></h2>
+  <label for="wc" data-i18n="crop"></label><select id="wc" class="cs"></select>
+  <button class="btn" id="wgo" data-i18n="wgo"></button>
+  <div id="wnow" class="hint"></div><div class="days" id="wd"></div><div class="out" id="wo"></div>
+  <p class="note" data-i18n="wsrc"></p></div>
+
+ <div class="p" id="p-crop" hidden><button class="back" data-i18n="back"></button><h2 class="tt"></h2>
+  <label for="cf" data-i18n="cphoto"></label><input id="cf" type="file" accept="image/*" capture="environment"><img class="prev" id="cp" alt="">
+  <label for="cc" data-i18n="crop"></label><select id="cc" class="cs"></select>
+  <button class="btn" id="cgo" data-i18n="cgo"></button><div class="out" id="co"></div></div>
+
+ <div class="p" id="p-wat" hidden><button class="back" data-i18n="back"></button><h2 class="tt"></h2>
+  <label for="wk" data-i18n="crop"></label><select id="wk" class="cs"></select>
+  <div class="row"><div><label for="wa" data-i18n="area"></label><input id="wa" type="number" min="0.1" step="0.1" value="1"></div>
+  <div><label for="wg" data-i18n="stage"></label><select id="wg"><option value=".4" data-i18n="s1"></option><option value=".8" data-i18n="s2"></option><option value="1.15" data-i18n="s3" selected></option><option value=".7" data-i18n="s4"></option></select></div></div>
+  <div class="row"><div><label for="wsoil" data-i18n="soil"></label><select id="wsoil"><option value="1.2" data-i18n="so1"></option><option value="1" data-i18n="so2" selected></option><option value=".85" data-i18n="so3"></option></select></div>
+  <div><label for="wm" data-i18n="meth"></label><select id="wm"><option value=".6" data-i18n="m1"></option><option value=".75" data-i18n="m2"></option><option value=".9" data-i18n="m3"></option></select></div></div>
+  <button class="btn" id="wtgo" data-i18n="wtgo"></button><div class="out" id="wto"></div></div>
+
+ <div class="p" id="p-mkt" hidden><button class="back" data-i18n="back"></button><h2 class="tt"></h2>
+  <label for="mc" data-i18n="crop"></label><select id="mc" class="cs"></select>
+  <label for="mq" data-i18n="qty"></label><input id="mq" type="number" min="0" step="0.5" value="10">
+  <button class="btn" id="mgo" data-i18n="mgo"></button><div id="mt"></div><div class="out" id="mo"></div>
+  <p class="note" data-i18n="msrc"></p></div>
+
+ <div class="p" id="p-vc" hidden><button class="back" data-i18n="back"></button><h2 class="tt"></h2>
+  <div class="chat" id="chat" aria-live="polite"></div>
+  <div class="say"><button class="mic" id="mic" hidden>🎙️</button><input id="vt" type="text" data-ph="vph"><button class="btn" id="vs" style="margin:0" data-i18n="vsend"></button></div>
+  <label class="say" style="font-weight:400"><input type="checkbox" id="tts" checked><span data-i18n="vspeak"></span></label><div class="err" id="ve"></div></div>
+
+ <div class="p" id="p-inp" hidden><button class="back" data-i18n="back"></button><h2 class="tt"></h2>
+  <label for="if" data-i18n="iphoto"></label><input id="if" type="file" accept="image/*" capture="environment"><img class="prev" id="ip" alt="">
+  <div class="row"><div><label for="ic" data-i18n="crop"></label><select id="ic" class="cs"></select></div><div><label for="ia" data-i18n="area"></label><input id="ia" type="number" min="0.1" step="0.1" value="1"></div></div>
+  <button class="btn" id="igo" data-i18n="igo"></button><div class="out" id="io"></div></div>
+</section></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const API=window.KISHAN_API||"";
+const LG=[["en","English","English","en-IN"],["hi","हिन्दी","Hindi","hi-IN"],["bn","বাংলা","Bengali","bn-IN"],["ta","தமிழ்","Tamil","ta-IN"],["te","తెలుగు","Telugu","te-IN"],["mr","मराठी","Marathi","mr-IN"],["gu","ગુજરાતી","Gujarati","gu-IN"],["kn","ಕನ್ನಡ","Kannada","kn-IN"],["ml","മലയാളം","Malayalam","ml-IN"],["pa","ਪੰਜਾਬੀ","Punjabi","pa-IN"],["or","ଓଡ଼ିଆ","Odia","or-IN"]];
+const STATES="Andhra Pradesh,Assam,Bihar,Chhattisgarh,Gujarat,Haryana,Himachal Pradesh,Jharkhand,Karnataka,Kerala,Madhya Pradesh,Maharashtra,Odisha,Punjab,Rajasthan,Tamil Nadu,Telangana,Uttar Pradesh,Uttarakhand,West Bengal,NCT of Delhi,Jammu and Kashmir".split(",");
+// crop: [season water mm, season days, water factor]
+const CR={Rice:[1200,120,1.5],Wheat:[450,120,1],Maize:[500,110,1],Cotton:[700,170,1],Sugarcane:[1800,330,1.1],Soybean:[450,100,1],Groundnut:[500,110,1],Potato:[500,100,1],Tomato:[600,120,1],Onion:[450,120,1],Mustard:[300,110,1],Chickpea:[300,110,1],Jute:[500,120,1],Tea:[1300,365,1]};
+const E={pick:"Choose your language",login:"Log in",lsub:"Kishan uses your farm’s location to give advice for your area.",name:"Your name",phone:"Mobile number",phph:"10 digits",state:"State",selstate:"Select state",dist:"District or village",gps:"Use my GPS location",gwait:"Finding your location…",gok:"GPS location saved.",gbad:"GPS is blocked. Choose your state and district instead.",gnote:"Phones with NavIC use it automatically for a precise location.",logout:"Log out",hello:"Namaste, {n}",back:"‹ Home",wait:"Please wait…",err:"Something went wrong. Check your internet and try again.",inst:"To install Kishan: open your browser menu and tap Add to Home screen.",
+t1:"Weather",t2:"Crop check",t3:"Water",t4:"Market",t5:"Ask Kishan",t6:"Inputs",d1:"Sowing, watering, harvest",d2:"Photo: pests and nutrients",d3:"How much water",d4:"Live mandi prices",d5:"Talk to a voice helper",d6:"Pesticide, weedicide, fertilizer",
+crop:"Crop",wgo:"Get 10-day forecast and advice",wnow:"Now: {t}°C, humidity {h}%, wind {w} km/h",wsrc:"Forecast data: Open-Meteo weather models for your exact location. This is not an official IMD warning.",
+cphoto:"Photo of your crop",cgo:"Check my crop",needphoto:"Add a clear photo of the leaves or plant first.",
+area:"Farm size (acres)",stage:"Crop stage",s1:"Just sown",s2:"Growing",s3:"Flowering or filling",s4:"Near harvest",soil:"Soil",so1:"Sandy",so2:"Loam",so3:"Clay",meth:"Method",m1:"Flood or canal",m2:"Sprinkler",m3:"Drip",wtgo:"Calculate water",
+wres:"{l} litres per week",wdet:"For {a} acre(s) of {c}. Next 7 days: evaporation {e} mm, rain {r} mm.",
+qty:"Quantity (quintals)",mgo:"Show market prices",mtop:"Mandi prices (₹ per quintal)",mmod:"Typical",mrange:"Range",mearn:"Estimated earning: about ₹{x}",noprice:"No price found for this crop in your state. Try another crop.",msrc:"Source: Agmarknet through data.gov.in. Confirm the rate at your mandi before selling.",
+vph:"Type or tap the mic",vsend:"Send",vspeak:"Read replies aloud",vnomic:"Microphone typing is not supported in this browser. Type your question.",iphoto:"Photo of your crop or weeds",igo:"What do I need to spray or apply?"};
+CR&&Object.keys(CR).forEach(k=>E["c_"+k]=k);
+const VER=JSON.stringify(E).length;
+let S={lang:"en",name:"",phone:"",state:"",dist:"",lat:"",lon:""},T=E,W=null;
+try{Object.assign(S,JSON.parse(localStorage.getItem("kishan")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("kishan",JSON.stringify(S))}catch(e){}};
+const L=()=>LG.find(l=>l[0]===S.lang)||LG[0];
+const t=(k,v={})=>String(T[k]||E[k]||k).replace(/\{(\w+)\}/g,(_,x)=>v[x]??"");
+const nf=n=>Math.round(n).toLocaleString(L()[3]);
+const place=()=>S.dist+", "+S.state+(S.lat?" (GPS "+S.lat+", "+S.lon+")":"");
+const show=id=>{["s1","s2","app"].forEach(x=>$("#"+x).hidden=x!==id);scrollTo(0,0)};
+async function api(p,o){const r=await fetch(API+p,o),j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||"err");return j}
+
+async function setLang(c){
+ S.lang=c;save();T=E;
+ if(c!=="en"){const k="kt_"+c+"_"+VER;let s=null;try{s=localStorage.getItem(k)}catch(e){}
+  if(s)T=JSON.parse(s);else{document.body.style.cursor="progress";
+   try{T=await api("/api/i18n",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({lang:c,dict:E})});try{localStorage.setItem(k,JSON.stringify(T))}catch(e){}}catch(e){T=E}
+   document.body.style.cursor=""}}
+ apply();
+}
+function apply(){
+ document.documentElement.lang=S.lang;
+ $$("[data-i18n]").forEach(e=>e.textContent=t(e.dataset.i18n));
+ $$("[data-ph]").forEach(e=>e.placeholder=t(e.dataset.ph));
+ $("#lsel").value=S.lang;
+ const cs=Object.keys(CR).map(k=>`<option value="${k}">${t("c_"+k)}</option>`).join("");
+ $$(".cs").forEach(s=>{const v=s.value;s.innerHTML=cs;if(v)s.value=v});
+ const sv=$("#st").value||S.state;$("#st").innerHTML=`<option value="">${t("selstate")}</option>`+STATES.map(x=>`<option>${x}</option>`).join("");$("#st").value=sv;
+ $("#tiles").innerHTML=[1,2,3,4,5,6].map(i=>`<button class="tile" data-p="${["wx","crop","wat","mkt","vc","inp"][i-1]}"><span>${["⛅","📷","💧","📈","🎙️","🧪"][i-1]}</span><b>${t("t"+i)}</b><small>${t("d"+i)}</small></button>`).join("");
+ [1,2,3,4,5,6].forEach(i=>$("#p-"+["wx","crop","wat","mkt","vc","inp"][i-1]+" .tt").textContent=t("t"+i));
+ $("#hi").textContent=t("hello",{n:S.name});$("#loc").textContent="📍 "+place();
+}
+$("#langs").innerHTML=LG.map(l=>`<button class="lb" data-l="${l[0]}">${l[1]}<small>${l[2]}</small></button>`).join("");
+$("#lsel").innerHTML=LG.map(l=>`<option value="${l[0]}">${l[1]}</option>`).join("");
+$("#langs").onclick=async e=>{const b=e.target.closest("[data-l]");if(!b)return;await setLang(b.dataset.l);S.name&&S.state?enter():show("s2")};
+$("#lsel").onchange=e=>setLang(e.target.value);
+$("#b2").onclick=()=>show("s1");
+const chk=()=>$("#go").disabled=!($("#nm").value.trim()&&/^\d{10}$/.test($("#ph").value)&&$("#st").value&&$("#di").value.trim());
+["nm","ph","st","di"].forEach(i=>$("#"+i).oninput=chk);
+$("#gps").onclick=()=>{const h=$("#gh");h.className="hint";h.textContent=t("gwait");
+ if(!navigator.geolocation){h.className="hint err";h.textContent=t("gbad");return}
+ navigator.geolocation.getCurrentPosition(p=>{S.lat=p.coords.latitude.toFixed(4);S.lon=p.coords.longitude.toFixed(4);h.textContent=t("gok")+" "+S.lat+", "+S.lon},()=>{h.className="hint err";h.textContent=t("gbad")},{enableHighAccuracy:true,timeout:15000})};
+$("#go").onclick=()=>{S.name=$("#nm").value.trim();S.phone=$("#ph").value;S.state=$("#st").value;S.dist=$("#di").value.trim();save();enter()};
+$("#out").onclick=()=>{S={lang:S.lang,name:"",phone:"",state:"",dist:"",lat:"",lon:""};save();W=null;show("s1")};
+function enter(){apply();openP(null);show("app")}
+function openP(id){$("#home").hidden=!!id;$$(".p").forEach(p=>p.hidden=p.id!=="p-"+id);scrollTo(0,0)}
+$("#tiles").onclick=e=>{const b=e.target.closest("[data-p]");if(b)openP(b.dataset.p)};
+$$(".back").forEach(b=>b.onclick=()=>openP(null));
+
+async function ai(prompt,out,image){
+ out.textContent=t("wait");
+ try{const j=await api("/api/advise",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({prompt,lang:S.lang,place:place(),image})});out.textContent=j.text;return j.text}
+ catch(e){out.textContent=t("err")+" ("+e.message+")";return null}
+}
+function shrink(f){return new Promise((ok,no)=>{const i=new Image();i.onload=()=>{const s=Math.min(1,1024/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);ok({type:"image/jpeg",data:c.toDataURL("image/jpeg",.82).split(",")[1]})};i.onerror=no;i.src=URL.createObjectURL(f)})}
+const prev=(a,b)=>$(a).onchange=()=>{const f=$(a).files[0];if(f){$(b).src=URL.createObjectURL(f);$(b).style.display="block"}};prev("#cf","#cp");prev("#if","#ip");
+async function photoAsk(inp,out,prompt){const f=$(inp).files[0],o=$(out);if(!f){o.textContent=t("needphoto");return}ai(prompt,o,await shrink(f))}
+const cname=k=>t("c_"+k);
+async function wx(){if(W&&Date.now()-W.t<6e5)return W.d;const q=S.lat?`lat=${S.lat}&lon=${S.lon}`:"place="+encodeURIComponent(S.dist+","+S.state);const d=await api("/api/weather?"+q);W={t:Date.now(),d};return d}
+const wsum=d=>d.daily.time.map((x,i)=>`${x}: ${d.daily.temperature_2m_min[i]}-${d.daily.temperature_2m_max[i]}C, rain ${d.daily.precipitation_sum[i]}mm (${d.daily.precipitation_probability_max[i]}%), ET0 ${d.daily.et0_fao_evapotranspiration[i]}mm`).join("\n");
+
+$("#wgo").onclick=async()=>{const o=$("#wo");o.textContent=t("wait");
+ try{const d=await wx(),c=d.current;
+  $("#wnow").textContent=t("wnow",{t:c.temperature_2m,h:c.relative_humidity_2m,w:c.wind_speed_10m});
+  $("#wd").innerHTML=d.daily.time.map((x,i)=>`<div class="day"><b>${new Date(x).toLocaleDateString(L()[3],{weekday:"short"})}</b><span>${Math.round(d.daily.temperature_2m_max[i])}° / ${Math.round(d.daily.temperature_2m_min[i])}°</span><span>💧 ${d.daily.precipitation_sum[i]} mm</span></div>`).join("");
+  ai(`Real 10-day forecast for the farm:\n${wsum(d)}\nCrop: ${$("#wc").value}. Using only this forecast, tell me: best days to sow, when to irrigate and how much, when to avoid spraying, and harvest timing and weather risks.`,o);
+ }catch(e){o.textContent=t("err")+" ("+e.message+")"}};
+
+$("#cgo").onclick=()=>photoAsk("#cf","#co",`Look at this ${$("#cc").value} crop photo. Tell me: present condition (health out of 10), pest or disease signs and how sure you are, nutrient deficiency signs, and what to do in the next 3 days. If the photo is unclear, say what photo to take.`);
+$("#igo").onclick=()=>{const a=$("#ia").value||1;photoAsk("#if","#io",`From this photo of ${$("#ic").value}, predict what the field needs for ${a} acre(s). Give insecticide or fungicide if pests or disease are visible, weedicide if weeds are visible, and fertilizer for nutrient lack. For each: active ingredient, dose per acre, TOTAL quantity for ${a} acre(s), water to mix in, and when to apply. Add one low-cost organic option. Say how sure you are.`)}
+
+$("#wtgo").onclick=async()=>{const o=$("#wto");o.textContent=t("wait");
+ try{const d=await wx(),c=$("#wk").value,[,, cf]=CR[c],a=+$("#wa").value||1,kc=+$("#wg").value,so=+$("#wsoil").value,ef=+$("#wm").value;
+  const et=d.daily.et0_fao_evapotranspiration.slice(0,7).reduce((s,x)=>s+x,0),rain=d.daily.precipitation_sum.slice(0,7).reduce((s,x)=>s+x,0);
+  const mm=Math.max(0,et*kc*cf*so-.8*rain),l=mm*4046.86*a/ef;
+  o.innerHTML=`<div class="big"></div><div id="wdt"></div><div id="wai" style="margin-top:12px"></div>`;
+  o.querySelector(".big").textContent=t("wres",{l:nf(l)});$("#wdt").textContent=t("wdet",{a:a,c:cname(c),e:nf(et),r:nf(rain)});
+  ai(`A farmer grows ${c} on ${a} acres. Calculated water need for the next 7 days is ${nf(l)} litres after counting forecast rain. Forecast:\n${wsum(d)}\nTell me how to split this into irrigations, the best time of day, and how to save water. Under 8 lines.`,$("#wai"));
+ }catch(e){o.textContent=t("err")+" ("+e.message+")"}};
+
+$("#mgo").onclick=async()=>{const c=$("#mc").value,o=$("#mo"),m=$("#mt");o.textContent=t("wait");m.innerHTML="";
+ try{const j=await api("/api/prices?crop="+c+"&state="+encodeURIComponent(S.state)),r=j.records.sort((a,b)=>(b.district===S.dist)-(a.district===S.dist)||b.modal-a.modal);
+  if(!r.length){o.textContent=t("noprice");return}
+  const md=r.map(x=>x.modal).sort((a,b)=>a-b)[Math.floor(r.length/2)],q=+$("#mq").value||0;
+  m.innerHTML=`<h3 style="margin-top:16px">${t("mtop")}</h3><table class="tbl"><tr><th></th><th>${t("mmod")}</th><th>${t("mrange")}</th></tr>${r.slice(0,8).map(x=>`<tr><td>${x.market}<br><small>${x.date}</small></td><td><b>₹${nf(x.modal)}</b></td><td>${nf(x.min)}–${nf(x.max)}</td></tr>`).join("")}</table>`;
+  const e=document.createElement("div");e.className="big";e.style.marginTop="12px";e.textContent=t("mearn",{x:nf(md*q)});m.appendChild(e);
+  ai(`Today's real mandi prices (Rs per quintal) for ${c} in ${S.state}:\n${r.slice(0,12).map(x=>`${x.market}, ${x.district}: modal ${x.modal}, min ${x.min}, max ${x.max}, ${x.date}`).join("\n")}\nI have ${q} quintals. Which mandi gives the best price, should I sell now or wait, and what to check before transport? Under 8 lines.`,o);
+ }catch(e){o.textContent=t("err")+" ("+e.message+")"}};
+
+const hist=[];
+function add(x,k){const d=document.createElement("div");d.className="m "+k;d.textContent=x;$("#chat").appendChild(d);d.scrollIntoView({block:"end"});return d}
+async function send(){const q=$("#vt").value.trim();if(!q)return;$("#vt").value="";add(q,"u");const a=add("…","k");
+ const r=await ai(`Conversation so far:\n${hist.slice(-6).map(m=>m[0]+": "+m[1]).join("\n")}\nFarmer: ${q}\nAnswer in at most 6 short lines, as if speaking aloud.`,a);
+ hist.push(["Farmer",q]);if(r){hist.push(["Kishan",r]);if($("#tts").checked&&window.speechSynthesis){const u=new SpeechSynthesisUtterance(r);u.lang=L()[3];speechSynthesis.cancel();speechSynthesis.speak(u)}}}
+$("#vs").onclick=send;$("#vt").onkeydown=e=>{if(e.key==="Enter")send()};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(SR){const m=$("#mic");m.hidden=false;let rc=null;m.onclick=()=>{if(rc){rc.stop();return}rc=new SR();rc.lang=L()[3];rc.interimResults=true;
+ rc.onresult=e=>{$("#vt").value=[...e.results].map(x=>x[0].transcript).join(" ")};rc.onend=()=>{rc=null;m.classList.remove("on");if($("#vt").value.trim())send()};rc.onerror=()=>{};m.classList.add("on");rc.start()}}else $("#ve").textContent=t("vnomic");
+if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});
+setLang(S.lang).then(()=>{if(S.name&&S.state)enter()});
+</script></body></html>

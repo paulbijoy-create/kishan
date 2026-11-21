@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: kishan
+    runtime: node
+    plan: free
+    buildCommand: "true"
+    startCommand: node server.js
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DATA_GOV_KEY
+        sync: false
